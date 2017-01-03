@@ -74,50 +74,65 @@ void LinkedList::insert(int data)
     }
   //Otherwise determine where the node should be inserted by following an ascending order scheme
   else if(inOrder)
-    {
+  {
       //Start at the head of the list
       currentNode = head;
       
       while(currentNode && data >= currentNode->data)
-	{	
-	  if(data == currentNode->data)
-	    isDuplicate = true;
-	  
-	  previousNode = currentNode;
-	  currentNode = currentNode->next;
-	}	
+		{	
+		  if(data == currentNode->data)
+			 isDuplicate = true;
+		  
+		  previousNode = currentNode;
+		  currentNode = currentNode->next;
+		}	
 		
       //Determine if the node to be inserted is to be inserted at the beginning of the list
       if(!isDuplicate)
-	{
-	  if(!previousNode)
-	    {
-	      head = nodeToInsert;
-	      nodeToInsert->next = currentNode;
-	    }
-	  //Otherwise insert the node in another part of the list
-	  else
-	    {				
-	      previousNode->next = nodeToInsert;	
-	      nodeToInsert->next = currentNode;
-	    }	
-	}
+		{
+		  if(!previousNode)
+		  {
+			head = nodeToInsert;
+			nodeToInsert->next = currentNode;
+		  }
+		  //Otherwise insert the node in another part of the list
+		  else
+		  {				
+				previousNode->next = nodeToInsert;	
+				nodeToInsert->next = currentNode;
+		  }	
+		}
       else
-	{
-	  delete nodeToInsert;
-	  std::cout << "ERROR: Duplicate data is not permitted.\n";
-	}
-    }
+		{
+		  delete nodeToInsert;
+		  std::cout << "ERROR: Duplicate data is not permitted.\n";
+		}
+  }
   else
-    {
-      std::cout << "ERROR: List must be in order before inserting a node.\n";
-    }
+  {
+	std::cout << "ERROR: List must be in order before inserting a node.\n";
+  }
 }
 
 /*Inserts a node into the list through the use of a double pointer*/
 void LinkedList::insertDbl(int data)
 {
+  Node** specialNode = &head;
   
+  Node* nodeToInsert = new Node;
+  nodeToInsert->data = data;
+  nodeToInsert->next = NULL;
+  
+  //Check if there are any nodes in the list
+  if(head)
+  {
+	  while(*specialNode && data >= (*specialNode)->data)
+	  {
+		  
+	  }
+  }
+  else
+	  std::cout << "ERROR: No nodes in the list.\n\n";
 }
 
 void LinkedList::insertionSort()
