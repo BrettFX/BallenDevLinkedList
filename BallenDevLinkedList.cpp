@@ -192,10 +192,10 @@ void LinkedList::displayDbl()
   {
       while(*specialNode)
       {	 
-	  std::cout << (*specialNode)->data << "\t";
+		  std::cout << (*specialNode)->data << "\t";
 
-	  //Set the specialNode equal to the reference of the memory address of the next pointer (store the memory address of the next node pointer)
-	  specialNode = &(*specialNode)->next;
+		  //Set the specialNode equal to the reference of the memory address of the next pointer (store the memory address of the next node pointer)
+		  specialNode = &(*specialNode)->next;
       }
 
       std::cout << "\n\n";
