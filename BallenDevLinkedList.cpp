@@ -108,10 +108,9 @@ void LinkedList::insert(int data)
 		  std::cout << "ERROR: Duplicate data is not permitted.\n";
 		}
   }
-  else
-  {
+  else  
 	std::cout << "ERROR: List must be in order before inserting a node.\n";
-  }
+  
 }
 
 /*Inserts a node into the list through the use of a double pointer*/
