@@ -3,7 +3,7 @@
 LinkedList::LinkedList()
 {
   head = NULL;
-  dblHead = NULL;
+  dblHead = &head;
   inOrder = false;
 }
 
@@ -209,15 +209,14 @@ void LinkedList::displayDbl()
 		  std::cout << (*specialNode)->data << "\t";
 
 		  //Set the specialNode equal to the reference of the memory address of the next pointer (store the memory address of the next node pointer)
-		  specialNode = &(*specialNode)->next;
+		  specialNode = &((*specialNode)->next);
       }
 
       std::cout << "\n\n";
   }
-  else
-  {
+  else  
       std::cout << "List is empty!\n\n";
-  }
+  
 }
 
 void LinkedList::displayVerbose()
@@ -283,7 +282,20 @@ void LinkedList:: deleteNode(int data)
 /*Deletes a node by using a double pointer*/
 void LinkedList:: deleteNodeDbl(int data)
 {
-
+	Node** specialNode = dblHead;
+	Node* nodeToDelete = NULL;
+	
+	while(*specialNode && (*specialNode)->data != data)		
+		specialNode = &((*specialNode)->next);
+	
+	if(*specialNode)
+	{
+		nodeToDelete = *specialNode;
+		*specialNode = nodeToDelete->next;
+		nodeToDelete->next = NULL;
+	}
+	else
+		std::cout << "ERROR: Unable to find the node with " << data << " as it's data.\n\n";
 }
 
 LinkedList::~LinkedList()

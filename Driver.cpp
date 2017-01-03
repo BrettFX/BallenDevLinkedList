@@ -33,6 +33,7 @@ enum Choices
 	DISPLAY_VERBOSE, 
 	DISPLAY_P2P, 
 	DELETE_NODE,
+	DELETE_NODE_DBL,
 	EXIT
 };
 
@@ -41,7 +42,7 @@ void displayMenu(LinkedList& list);
 void renderChoice(int choice, LinkedList& list);
 
 int main(int argc, char** argv)
-{
+{	
   LinkedList testList;
 	
   int choice = 0; 
@@ -77,7 +78,8 @@ void mainMenu()
 	cout << DISPLAY_NORMAL << " - Display List (Normal)\n";
 	cout << DISPLAY_VERBOSE << " - Display List (Verbose)\n";
 	cout << DISPLAY_P2P << " - Display List (P2P)\n";
-	cout << DELETE_NODE << " - Delete Node\n";
+	cout << DELETE_NODE << " - Delete Node (Normal)\n";
+	cout << DELETE_NODE_DBL << " - Delete Node (P2P)\n";
 	cout << EXIT << " - Exit\n\n";	
 	
 	cout << "Enter Choice: ";
@@ -130,6 +132,14 @@ void renderChoice(int choice, LinkedList& list)
 			cin >> input;
 			
 			list.deleteNode(input);
+			
+			break;
+			
+		case DELETE_NODE_DBL:
+			cout << "\nEnter data of the node to be deleted: ";
+			cin >> input;
+			
+			list.deleteNodeDbl(input);
 			
 			break;
 			
