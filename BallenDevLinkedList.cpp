@@ -292,7 +292,7 @@ void LinkedList:: deleteNodeDbl(int data)
 	{
 		nodeToDelete = *specialNode;
 		*specialNode = nodeToDelete->next;
-		nodeToDelete->next = NULL;
+		nodeToDelete->next = NULL;		
 	}
 	else
 		std::cout << "ERROR: Unable to find the node with " << data << " as it's data.\n\n";
